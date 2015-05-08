@@ -10,7 +10,7 @@
 		<script src="js/main.js"></script>
         <script src="js/tictactoeController.js"></script>
 	</head>
-	<body>
+	<body ng-app="tictactoeApp">
 
     <h1>Tic-Tac-Toe</h1>
     <div id="score-home">
@@ -22,31 +22,23 @@
     <div id="score-visitor">
         <h2>Visitor Score</h2>
         <p></p>
+        {{1+2}}
 
 
     </div>
 
+        <div ng-controller="TictactoeController as game">
+            <div class="row" ng-repeat="row in game.gameBoard">
+
+            </div>
 
 
-    <table>
-        <tr id="row-one">
-            <td id="one"></td>
-            <td id="two"></td>
-            <td id="three"></td>
-        </tr>
-        <tr id="row-two">
-            <td id="four"></td>
-            <td id="five"></td>
-            <td id="six"></td>
-        </tr>
-        <tr id="row-three">
-            <td id="seven"></td>
-            <td id="eight"></td>
-            <td id="nine"></td>
-        </tr>
+        </div>
 
 
-    </table>
+
+
+
 
     <div id="start-button">
         <button>Play a game!</button>
