@@ -10,12 +10,14 @@ function TictactoeController( ) {
     var x = "home";
     var y = "visitor";
 
-    this.gameBoard = [
-        [{player: x}, {player: y}, {player:'null'}],
-        [{player: x}, {player: y}, {player:'null'}],
-        [{player: x}, {player: y}, {player:'null'}]]
 
-       
+    this.gameBoard = [
+        {player:'null'}, {player: 'null'}, {player:'null'},
+        {player: 'null'}, {player:'null'}, {player:'null'},
+        {player: 'null'}, {player: 'null'}, {player:'null'}
+    ]
+
+
 };
 
 

@@ -16,32 +16,30 @@
     <div id="score-home">
        <h2>Home Score</h2>
         <p></p>
-
     </div>
 
     <div id="score-visitor">
         <h2>Visitor Score</h2>
         <p></p>
-        {{1+2}}
-
-
     </div>
 
-        <div ng-controller="TictactoeController as game">
-            <div class="row" ng-repeat="row in game.gameBoard">
+    <div id="board" ng-controller="TictactoeController as game">
 
-            </div>
+        <button class="square" ng-repeat="square in game.gameBoard">
 
+        </button>
 
-        </div>
-
+    </div>
 
 
 
 
 
     <div id="start-button">
-        <button>Play a game!</button>
+        <button class="play">Play a game!</button>
+    </div>
 
 	</body>
 </html>
+
+

@@ -1,22 +1,14 @@
 
 
+
 h1{
     margin-left: auto;
     margin-right: auto;
     text-align: center;
 }
 
-td{
-    border: solid black;
-    height: 150px;
-    width: 150px;
-}
 
-table{
-    margin-top: 100px;
-    margin-left: auto;
-    margin-right: auto;
-}
+
 
 #score-visitor{
     float: right;
@@ -28,20 +20,36 @@ table{
     margin-left: 150px;
 }
 
-#score-visitor{
-}
 
 #start-button{
     margin-top: 50px;
     text-align: center;
 }
 
-.row {
-    margin-top: 5px;
-    border: solid black;
-    height: 50px;
-    width: 50px;
+
+#board{
+    width: 500px;
+    height: 500px;
+    border: 5px solid blue;
     margin-left: auto;
     margin-right: auto;
- }
+
+}
+
+.square {
+    border: solid black;
+    height: 32%;
+    width: 32%;
+    float: left;
+    background-color: ghostwhite;
+    margin: 3px;
+
+}
+
+.play {
+    background-color: silver;
+    margin-left: auto;
+
+
+}
 
