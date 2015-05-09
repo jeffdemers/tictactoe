@@ -32,8 +32,8 @@
 
 
 
-<div id="board" ng-controller="TictactoeController as game">
-    <button class="square" ng-click="game.squareClicked($index)" ng-repeat="square in game.gameBoard">{{square.player}}
+<div id="board" ng-controller="TictactoeController as ttt">
+    <button class="box" ng-click="ttt.squareClicked($index)" ng-repeat="square in ttt.gameBoard">{{square.player}}
     </button>
 </div>
 
@@ -42,6 +42,8 @@
 </div>
 
 </body>
+
+
 <script>
     angular
             .module('tictactoeApp',[])
