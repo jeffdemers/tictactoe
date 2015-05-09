@@ -8,60 +8,57 @@
 		<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.15/angular.min.js"></script>
 		<script src="js/main.js"></script>
         <script src="js/tictactoeController.js"></script>
+        <link href='http://fonts.googleapis.com/css?family=Palanquin' rel='stylesheet' type='text/css'>
 	</head>
 	<body ng-app="tictactoeApp">
 
     <h1>Tic-Tac-Toe</h1>
-    <div id="score-home">
+
+<ul id="scores">
+    <li id="score-home">
        <h2>Home Score</h2>
         <p></p>
-    </div>
 
-    <div id="score-visitor">
+    </li>
+
+    <li id="score-visitor">
         <h2>Visitor Score</h2>
         <p></p>
-    </div>
 
-    <div id="board" ng-controller="TictactoeController as game">
-        <button class="square" ng-click="game.squareClicked($index)" ng-repeat="square in game.gameBoard">
-        </button>
-    </div>
+    </li>
+</ul>
 
-    <div id="start-button">
-        <button class="play">Play a game!</button>
-    </div>
 
-	</body>
+
+
+
+<div id="board" ng-controller="TictactoeController as game">
+    <button class="square" ng-click="game.squareClicked($index)" ng-repeat="square in game.gameBoard">{{square.player}}
+    </button>
+</div>
+
+<div id="start-button">
+    <button class="play">Play a game!</button>
+</div>
+
+</body>
 <script>
     angular
             .module('tictactoeApp',[])
             .controller('TictactoeController', TictactoeController);
-
     function TictactoeController( ) {
-
         var x = "home";
         var y = "visitor";
-
-
         this.gameBoard = [
-            {player:'null'}, {player: 'null'}, {player:'null'},
-            {player: 'null'}, {player:'null'}, {player:'null'},
-            {player: 'null'}, {player: 'null'}, {player:'null'}
+            {player:'x'}, {player: 'x'}, {player:''},
+            {player: 'o'}, {player:''}, {player:''},
+            {player: 'x'}, {player: ''}, {player:''}
         ];
-
         //function to find the index of each cell clicked
         this.squareClicked = function(cellIndex){
             alert(cellIndex);
-           
 
         }
-
-
     }
-
-
-
 </script>
 </html>
-
-
