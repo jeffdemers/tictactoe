@@ -10,60 +10,44 @@
         <script src="js/tictactoeController.js"></script>
         <link href='http://fonts.googleapis.com/css?family=Palanquin' rel='stylesheet' type='text/css'>
 	</head>
-	<body ng-app="tictactoeApp">
+    <body ng-app="tictactoeApp">
 
     <h1>Tic-Tac-Toe</h1>
 
     <ul id="scores">
         <li id="score-home">
             <h2>Home Score</h2>
-                <p></p>
+            <p></p>
 
         </li>
 
         <li id="score-visitor">
             <h2>Visitor Score</h2>
-                <p></p>
+            <p></p>
 
-         </li>
+        </li>
     </ul>
 
+    <div id="board">
+        <input type="button" id="zero" onclick="assign('zero')"/>
+        <input type="button" id="one" onclick="assign('one')"/>
+        <input type="button" id="two" onclick="assign('two')"/>
+
+
+        <input type="button" id="three" onclick="assign('three')"/>
+        <input type="button" id="four" onclick="assign('four')"/>
+        <input type="button" id="five" onclick="assign('five')"/>
+
+        <input type="button" id="six" onclick="assign('six')"/>
+        <input type="button" id="seven" onclick="assign('seven')"/>
+        <input type="button" id="eight" onclick="assign('eight')"/>
+
+    </div>
 
 
 
-
-<div id="board" ng-controller="TictactoeController as ttt">
-    <button class="box" ng-click="ttt.squareClicked($index)" ng-repeat="square in ttt.gameBoard">{{square.player}}
-    </button>
-</div>
-
-<div id="start-button">
-    <button class="play">Play a game!</button>
-</div>
-
-</body>
-
-
-<script>
-    angular
-            .module('tictactoeApp',[])
-            .controller('TictactoeController', TictactoeController);
-    function TictactoeController( ) {
-        var x = "home";
-        var y = "visitor";
-        this.gameBoard = [
-            {player: ''}, {player:''}, {player:''},
-            {player: ''}, {player:''}, {player:''},
-            {player: ''}, {player: ''}, {player:''}
-        ];
-        //function to find the index of each cell clicked
-        this.squareClicked = function(cellIndex){
-            alert(cellIndex);
+    </body>
 
 
 
-
-        }
-    }
-</script>
 </html>
