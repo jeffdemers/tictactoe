@@ -1,7 +1,7 @@
 
 body{
     font-family: 'Palanquin', sans-serif;
-    background-color: white;
+    background-color: lightgrey;
 }
 
 h1{
@@ -19,10 +19,12 @@ h1{
 }
 
 #board{
-    width: 450px;
-    height: 450px;
+    width: 500px;
+    height: 500px;
     margin-left: auto;
     margin-right: auto;
+
+    border: solid gainsboro;
 
 }
 
@@ -34,6 +36,7 @@ h1{
     background-color: ghostwhite;
     margin: 2px;
     font-size: 30px;
+    border-radius: 20%;
 
 }
 

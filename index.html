@@ -14,19 +14,19 @@
 
     <h1>Tic-Tac-Toe</h1>
 
-<ul id="scores">
-    <li id="score-home">
-       <h2>Home Score</h2>
-        <p></p>
+    <ul id="scores">
+        <li id="score-home">
+            <h2>Home Score</h2>
+                <p></p>
 
-    </li>
+        </li>
 
-    <li id="score-visitor">
-        <h2>Visitor Score</h2>
-        <p></p>
+        <li id="score-visitor">
+            <h2>Visitor Score</h2>
+                <p></p>
 
-    </li>
-</ul>
+         </li>
+    </ul>
 
 
 
@@ -52,13 +52,16 @@
         var x = "home";
         var y = "visitor";
         this.gameBoard = [
-            {player:'x'}, {player: 'x'}, {player:''},
-            {player: 'o'}, {player:''}, {player:''},
-            {player: 'x'}, {player: ''}, {player:''}
+            {player: ''}, {player:''}, {player:''},
+            {player: ''}, {player:''}, {player:''},
+            {player: ''}, {player: ''}, {player:''}
         ];
         //function to find the index of each cell clicked
         this.squareClicked = function(cellIndex){
             alert(cellIndex);
+
+
+
 
         }
     }
