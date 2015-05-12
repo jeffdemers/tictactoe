@@ -17,13 +17,19 @@
     <ul id="scores">
         <li id="score-home">
             <h2>Score of X</h2>
-            <p></p>
+            <p id="winnerX">   </p>
+
+        </li>
+
+        <li id="winner-msg">
+            <h2 id="winner-main-msg"></h2>
+            <p>   </p>
 
         </li>
 
         <li id="score-visitor">
             <h2>Score for O</h2>
-            <p></p>
+            <p id="winnerO">   </p>
 
         </li>
     </ul>
@@ -32,7 +38,6 @@
         <input type = "button" id="zero" onclick="assign('zero')"/>
         <input type = "button" id="one" onclick="assign('one')"/>
         <input type = "button" id="two" onclick="assign('two')"/>
-
 
         <input type = "button" id="three" onclick="assign('three')"/>
         <input type = "button" id="four" onclick="assign('four')"/>
@@ -44,7 +49,7 @@
 
     </div>
 
-    <input type="button" id="boardReset" value="New Game"  onclick="reset()"/>
+    <input type="button" id="board-reset" text="New Game"  onclick="reset();"/>
 
 
     </body>

@@ -7,8 +7,6 @@
 //
 //function TictactoeController( ) {
 //
-//    var x = "home";
-//    var y = "visitor";
 //
 //
 //    this.gameBoard = [
