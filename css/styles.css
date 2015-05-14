@@ -22,13 +22,13 @@ h1{
 
 }
 
-input {
+.input {
     border: inset cornsilk;
-    height: 32%;
-    width: 32%;
+    height: 31%;
+    width: 31%;
     float: left;
     background-color: ghostwhite;
-    margin: 3px;
+    margin: 1px;
     font-size: 50px;
     border-radius: 20%;
 
@@ -70,7 +70,7 @@ li{
 #board-reset{
     left-margin: auto;
     right-margin: auto;
-    font-size: 30px;
+    font-size: 20px;
     width: 300px;
     length: 300px;
 

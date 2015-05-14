@@ -1,18 +1,21 @@
 <!DOCTYPE html>
-<html>
+<html ng-app="tictactoeApp">
 	<head>
 		<meta charset="utf-8">
 		<title></title>
 		<link rel="stylesheet" href="css/normalize.css">
 		<link rel="stylesheet" href="css/styles.css">
-		<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.15/angular.min.js"></script>
-		<script src="js/main.js"></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.15/angular.min.js"></script>
+        <script src="https://cdn.firebase.com/js/client/2.2.4/firebase.js"></script>
+        <script src="https://cdn.firebase.com/libs/angularfire/1.1.1/angularfire.min.js"></script>
+        <script src="js/main.js"></script>
         <script src="js/tictactoeController.js"></script>
         <link href='http://fonts.googleapis.com/css?family=Palanquin' rel='stylesheet' type='text/css'>
 	</head>
-    <body ng-app="tictactoeApp">
+    <body ng-controller="TictactoeController">
 
     <h1>Tic-Tac-Toe</h1>
+    {{2+1}}
 
     <ul id="scores">
         <li id="score-home">
@@ -22,7 +25,7 @@
         </li>
 
         <li id="winner-msg">
-            <h2 id="winner-main-msg"></h2>
+            <h2 ng-show="game.winner" id="winner-main-msg">Winner</h2>
             <p>   </p>
 
         </li>
@@ -34,22 +37,17 @@
         </li>
     </ul>
 
-    <div id="board">
-        <input type = "button" id="zero" onclick="assign('zero')"/>
-        <input type = "button" id="one" onclick="assign('one')"/>
-        <input type = "button" id="two" onclick="assign('two')"/>
 
-        <input type = "button" id="three" onclick="assign('three')"/>
-        <input type = "button" id="four" onclick="assign('four')"/>
-        <input type = "button" id="five" onclick="assign('five')"/>
-
-        <input type = "button" id="six" onclick="assign('six')"/>
-        <input type = "button" id="seven" onclick="assign('seven')"/>
-        <input type = "button" id="eight" onclick="assign('eight')"/>
-
+    <div id ="board">
+        <div class="input" ng-click="move($index)" ng-repeat="block in game.board track by $index">
+            <h1>{{getSymbol($index)}}</h1>
+        </div>
     </div>
 
-    <input type="button" id="board-reset" text="New Game"  onclick="reset();"/>
+        <!--<div class="row" ng-repeat="row in ttt.gameBoard">-->
+            <!--</div>-->
+
+    <input type="button" id="board-reset" value="New Game"  ng-click="reset()"/>
 
 
     </body>
@@ -57,3 +55,18 @@
 
 
 </html>
+
+
+<!--<input type = "button" id="zero" onclick="assign('zero')"/>-->
+<!--<input type = "button" id="zero" onclick="{{ttt.assign}}"/>-->
+<!--<input type = "button" id="one" onclick="{{ttt.assign}}('one')"/>-->
+<!--<input type = "button" id="two" onclick="{{ttt.assign}}('two')"/>-->
+
+<!--<input type = "button" id="three" onclick="{{ttt.assign}}('three')"/>-->
+<!--<input type = "button" id="four" onclick="{{ttt.assign}}('four')"/>-->
+<!--<input type = "button" id="five" onclick="{{ttt.assign}}('five')"/>-->
+
+<!--<input type = "button" id="six" onclick="{{ttt.assign}}('six')"/>-->
+<!--<input type = "button" id="seven" onclick="{{ttt.assign}}('seven')"/>-->
+<!--<input type = "button" id="eight" onclick="{{ttt.assign}}('eight')"/>-->
+
