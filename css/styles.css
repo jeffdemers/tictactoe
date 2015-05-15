@@ -58,8 +58,8 @@ ul{
 
 li{
     display: inline-block;
-    padding-left: 5%;
-    padding-right: 5%;
+    padding-left: 9.5%;
+    padding-right: 9.5%;
 
 }
 
@@ -88,17 +88,20 @@ li{
     margin-bottom: 20px;
     margin-left: auto;
     margin-right: auto;
-    
 
+}
 
-
-
+#score{
+    width: 750px;
+    margin-left: auto;
+    margin-right: auto;
 }
 
 p {
     font-size: 25px;
     padding-bottom: 0px;
     margin-bottom: 0px;
+    padding-left: 50px;
 
 }
 

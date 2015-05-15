@@ -13,42 +13,53 @@ function TictactoeController($scope, $firebaseObject) {
     //using "game" as term for firebase
     $firebaseObject(rootRef).$bindTo($scope, "game");
 
+    $scope.canMove = true;
 
-    //get winner function by row (0,1,2) (3,4,5) (6,7,8)
-    // column (0,3,6) (1,4,7) (2,5,8)
-    // and both diagnals (0,4,8) (6,4,8)
+
+
+
     function getWinner () {
         if (!$scope.game){
             return;
         }
         var boxes = $scope.game.board;
-
+        //get winner function by row (0,1,2) (3,4,5) (6,7,8)
         for(var row = 0; row < 3; row++){
             var sum = boxes[row * 3] + boxes[row * 3 + 1] + boxes[row * 3 + 2];
             var winner = checkWinner(sum);
-            if ( winner ) { return winner; }
+            if ( winner ) {
+                $scope.canMove = false;
+                return winner;
+            }
 
         }
-
+        // column (0,3,6) (1,4,7) (2,5,8)
         for(var col = 0; col < 3; col++){
             var sum = boxes[col] + boxes[col + 3] + boxes[col + 6];
             winner = checkWinner(sum);
-            if ( winner ) { return winner; }
+            if ( winner ) {
+                $scope.canMove = false;
+                return winner; }
         }
-
+        // and both diagonals (0,4,8) (6,4,8)
         var sum = boxes[0] + boxes[4] + boxes[8];
         winner = checkWinner(sum);
-        if ( winner ) { return winner; }
+        if ( winner ) {
+            $scope.canMove = false;
+            return winner; }
 
         var sum = boxes[6] + boxes[4] + boxes[2];
         winner = checkWinner(sum);
-        if ( winner ) { return winner; }
+        if ( winner ) {
+            $scope.canMove = false;
+            return winner; }
 
         return 0;
 
     }
     // move alternates between users by *-1.
     $scope.move = function (square){
+    if($scope.canMove) {
         var sqVal = $scope.game.board[square];
         if(sqVal) return;
         $scope.game.board[square] = $scope.game.turn;
@@ -56,10 +67,9 @@ function TictactoeController($scope, $firebaseObject) {
 
         $scope.game.winner = getWinner();
 
+    }};
 
-    }
-
-    //get the actual symbol based on (x if val is 1) or (O is val is -1)
+    //get the symbol based on (x if val is 1) or (O is val is -1)
     $scope.getSymbol = function (square){
         var sqVal = $scope.game.board[square];
         if (sqVal === 1) {
@@ -72,31 +82,19 @@ function TictactoeController($scope, $firebaseObject) {
         }
 
     };
-    //check winner.
-    //function checkWinner(sum) {
-    //    if ( sum === 3 || sum === -3 ) {
-    //        $scope.score1= $scope.score1 + sum < 0 ? 0 :1;
-    //        $scope.score2= $scope.score2 + sum < 0 ? 0 :1;
-    //
-    //        return sum < 0 ? -1 : 1;
-    //
-    //    } else {
-    //        return 0;
-    //    }
-    //}
+
 
 //if winner increment the score in firebase
     function checkWinner(sum) {
         if ( sum === -3) {
             $scope.game.score1++;
-            return -1;
+            return true;
         }else if (sum === 3) {
             $scope.game.score2++;
-            return 1;
-        }else {
-            return 0;
+            return true;
         }
     }
+
 
 
     //reset firebase board after each game. board values 0, winner 0 and game turn to 1
@@ -104,14 +102,16 @@ function TictactoeController($scope, $firebaseObject) {
         $scope.game.board = [0,0,0,0,0,0,0,0,0];
         $scope.game.winner = 0;
         $scope.game.turn = 1;
+        $scope.canMove = true;
     }
-
+//reset everything including score 1 and score 2
     $scope.newGame = function (){
         $scope.game.board = [0,0,0,0,0,0,0,0,0];
         $scope.game.winner = 0;
         $scope.game.turn = 1;
         $scope.game.score1 = 0;
         $scope.game.score2 = 0;
+        $scope.canMove = true;
     }
 
 

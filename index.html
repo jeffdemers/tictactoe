@@ -20,7 +20,7 @@
 <div id="header">
     <h6>Tic-Tac-Toe</h6>
 </div>
-
+<div id="score">
     <ul id="scores">
         <li id="score-home">
             <h2>Score of X</h2>
@@ -41,10 +41,10 @@
 
         </li>
     </ul>
-
+</div>
 
     <div id ="board">
-        <div class="input" ng-click="move($index)" ng-repeat="block in game.board track by $index">
+        <div class="input" ng-click="move($index)" ng-class = "" ng-repeat="block in game.board track by $index">
             <h3>{{getSymbol($index)}}</h3>
         </div>
     </div>
