@@ -7,18 +7,21 @@ TictactoeController.$inject = ['$scope', '$firebaseObject'];
 function TictactoeController($scope, $firebaseObject) {
 
 
-
+    //connecting firebase
     var rootRef = new Firebase ("https://tictactoejd.firebaseio.com/");
 
+    //using "game" as term for firebase
     $firebaseObject(rootRef).$bindTo($scope, "game");
 
 
+    //get winner function by row (0,1,2) (3,4,5) (6,7,8)
+    // column (0,3,6) (1,4,7) (2,5,8)
+    // and both diagnals (0,4,8) (6,4,8)
     function getWinner () {
         if (!$scope.game){
             return;
         }
         var boxes = $scope.game.board;
-
 
         for(var row = 0; row < 3; row++){
             var sum = boxes[row * 3] + boxes[row * 3 + 1] + boxes[row * 3 + 2];
@@ -43,41 +46,44 @@ function TictactoeController($scope, $firebaseObject) {
         return 0;
 
     }
-
+    // move alternates between users by *-1.
     $scope.move = function (square){
         var sqVal = $scope.game.board[square];
         if(sqVal) return;
         $scope.game.board[square] = $scope.game.turn;
-        $scope.game.turn *= -1;
+        $scope.game.turn = $scope.game.turn * (-1);
+
         $scope.game.winner = getWinner();
+
 
     }
 
-
+    //get the actual symbol based on (x if val is 1) or (O is val is -1)
     $scope.getSymbol = function (square){
         var sqVal = $scope.game.board[square];
         if (sqVal === 1) {
             return "X";
         } else if (sqVal === -1){
             return "O";
+
         } else{
             return "";
         }
 
     };
-
+    //check winner logic is sum = 3/-3 increment the score, else end.
     function checkWinner(sum) {
         if ( sum === 3 || sum === -3 ) {
-            self.score1 += sum < 0 ? 0 :1;
-            self.score2 += sum < 0 ? 0 :1;
-            //initBoard();
+            $scope.score1= $scope.score1 + sum < 0 ? 0 :1;
+            $scope.score2= $scope.score2 + sum < 0 ? 0 :1;
             return sum < 0 ? -1 : 1;
+
         } else {
             return 0;
         }
     }
 
-
+    //reset firebase board after each game. board values 0, winner 0 and game turn to 1
     $scope.reset = function (){
         $scope.game.board = [0,0,0,0,0,0,0,0,0];
         $scope.game.winner = 0;

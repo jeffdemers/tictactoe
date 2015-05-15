@@ -1,78 +1,96 @@
 body{
-    font-family: 'Palanquin', sans-serif;
-    background-color: lightgrey;
+    font-family: 'Droid Sans', sans-serif;
+    background: url('blue_background.jpg') no-repeat center;
+    background-size: cover;
 }
 
-h1{
-    margin-left: auto;
-    margin-right: auto;
-    padding-bottom: 0px;
-    text-align: center;
+h6{
+    margin: 0px 0px 0px 40px;
     font-size: 40px;
-    margin-top: 10px;
+    color: white;
+}
+
+#header{
+    width: 100%;
+    background-color: darkgrey;
+    height: 80px;
+    margin-top: 0px;
+    padding-top: 0px;
+
+
+}
+
+h3{
+    font-size: 45px;
+    margin: 0px;
+    margin-left: 45px;
 }
 
 
 #board{
-    width: 450px;
-    height: 450px;
+    width: 400px;
+    height: 400px;
     margin-left: auto;
     margin-right: auto;
-    border: solid gainsboro;
+
 
 }
 
 .input {
-    border: inset cornsilk;
+    border:solid white;
     height: 31%;
     width: 31%;
     float: left;
-    background-color: ghostwhite;
-    margin: 1px;
-    font-size: 50px;
-    border-radius: 20%;
+    background-color: transparent;
+    font-size: 20%;
 
 }
 
-.play {
-    background-color: silver;
-    margin-left: auto;
-}
+
 
 ul{
     margin-top: 0px;
     margin-bottom: 3px;
     padding-left: 0px;
+
+
 }
 
 li{
     display: inline-block;
+    padding-left: 5%;
+    padding-right: 5%;
+
 }
 
 #score-visitor{
-    float: right;
-    margin-right: 100px;
+    /*float: right;*/
 }
 
 #score-home {
-    margin-left: 100px;
 }
 
 #winner-main-msg{
-    margin-left: 350px;
-    margin-top: 0px;
-    padding-top: 5px;
-    font-size: 25px;
-    margin-bottom: 0px;
+    /*font-size: 25px;*/
+    /*margin-bottom: 0px;*/
     color: darkgreen;
+
+}
+
+#wrapper {
+    text-align: center;
 }
 
 #board-reset{
-    left-margin: auto;
-    right-margin: auto;
     font-size: 20px;
     width: 300px;
     length: 300px;
+    margin-bottom: 20px;
+    margin-left: auto;
+    margin-right: auto;
+
+
+
 
 }
 
@@ -81,4 +99,9 @@ p {
     padding-bottom: 0px;
     margin-bottom: 0px;
 
+}
+
+footer{
+    height: 300px;
+    background-color: darkgrey;
 }
