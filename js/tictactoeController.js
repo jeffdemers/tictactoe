@@ -27,6 +27,7 @@ function TictactoeController($scope, $firebaseObject) {
             var sum = boxes[row * 3] + boxes[row * 3 + 1] + boxes[row * 3 + 2];
             var winner = checkWinner(sum);
             if ( winner ) { return winner; }
+
         }
 
         for(var col = 0; col < 3; col++){
@@ -71,17 +72,32 @@ function TictactoeController($scope, $firebaseObject) {
         }
 
     };
-    //check winner logic is sum = 3/-3 increment the score, else end.
-    function checkWinner(sum) {
-        if ( sum === 3 || sum === -3 ) {
-            $scope.score1= $scope.score1 + sum < 0 ? 0 :1;
-            $scope.score2= $scope.score2 + sum < 0 ? 0 :1;
-            return sum < 0 ? -1 : 1;
+    //check winner.
+    //function checkWinner(sum) {
+    //    if ( sum === 3 || sum === -3 ) {
+    //        $scope.score1= $scope.score1 + sum < 0 ? 0 :1;
+    //        $scope.score2= $scope.score2 + sum < 0 ? 0 :1;
+    //
+    //        return sum < 0 ? -1 : 1;
+    //
+    //    } else {
+    //        return 0;
+    //    }
+    //}
 
-        } else {
+//if winner increment the score in firebase
+    function checkWinner(sum) {
+        if ( sum === -3) {
+            $scope.game.score1++;
+            return -1;
+        }else if (sum === 3) {
+            $scope.game.score2++;
+            return 1;
+        }else {
             return 0;
         }
     }
+
 
     //reset firebase board after each game. board values 0, winner 0 and game turn to 1
     $scope.reset = function (){
@@ -90,12 +106,19 @@ function TictactoeController($scope, $firebaseObject) {
         $scope.game.turn = 1;
     }
 
+    $scope.newGame = function (){
+        $scope.game.board = [0,0,0,0,0,0,0,0,0];
+        $scope.game.winner = 0;
+        $scope.game.turn = 1;
+        $scope.game.score1 = 0;
+        $scope.game.score2 = 0;
+    }
+
 
     console.log(getWinner());
 
     self.winner = getWinner();
 }
-
 
 
 

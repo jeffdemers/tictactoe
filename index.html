@@ -24,7 +24,7 @@
     <ul id="scores">
         <li id="score-home">
             <h2>Score of X</h2>
-            <p id="winnerX" ng-bind="score1"> </p>
+            <p id="winnerX" ng-bind="game.score2"> </p>
 
 
         </li>
@@ -37,7 +37,7 @@
 
         <li id="score-visitor">
             <h2>Score for O</h2>
-            <p id="winnerO" ng-bind="score2">  </p>
+            <p id="winnerO" ng-bind="game.score1">  </p>
 
         </li>
     </ul>
@@ -51,7 +51,8 @@
 
 
 <div id="wrapper">
-    <input type="button" id="board-reset" value="New Game"  ng-click="reset()"/>
+    <input type="button" id="board-reset" value="Play Again!"  ng-click="reset()"/>
+    <input type="button" id="board-reset" value="New Game"  ng-click="newGame()"/>
 </div>
 
     </body>
