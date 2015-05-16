@@ -10,10 +10,11 @@ function TictactoeController($scope, $firebaseObject) {
     //connecting firebase
     var rootRef = new Firebase ("https://tictactoejd.firebaseio.com/");
 
-    //using "game" as term for firebase
+    //using "game" as for firebase binding.
     $firebaseObject(rootRef).$bindTo($scope, "game");
-
+    //players can make a move, true or false.  false once game is won.
     $scope.canMove = true;
+    $scope.tempBoard = [];
 
 
 
@@ -57,7 +58,7 @@ function TictactoeController($scope, $firebaseObject) {
         return 0;
 
     }
-    // move alternates between users by *-1.
+    // move alternates between users by *-1. checking if player has won
     $scope.move = function (square){
     if($scope.canMove) {
         var sqVal = $scope.game.board[square];
@@ -73,10 +74,11 @@ function TictactoeController($scope, $firebaseObject) {
     $scope.getSymbol = function (square){
         var sqVal = $scope.game.board[square];
         if (sqVal === 1) {
+            $scope.tempBoard[square] = "player1";
             return "X";
         } else if (sqVal === -1){
+            $scope.tempBoard[square] = "player2";
             return "O";
-
         } else{
             return "";
         }
@@ -84,13 +86,13 @@ function TictactoeController($scope, $firebaseObject) {
     };
 
 
-//if winner increment the score in firebase
+    //if winner increment the score in firebase.
     function checkWinner(sum) {
         if ( sum === -3) {
-            $scope.game.score1++;
+            $scope.game.scoreO++;
             return true;
         }else if (sum === 3) {
-            $scope.game.score2++;
+            $scope.game.scoreX++;
             return true;
         }
     }
@@ -104,166 +106,26 @@ function TictactoeController($scope, $firebaseObject) {
         $scope.game.turn = 1;
         $scope.canMove = true;
     }
-//reset everything including score 1 and score 2
+
+    //reset everything including score 1 and score 2
     $scope.newGame = function (){
         $scope.game.board = [0,0,0,0,0,0,0,0,0];
         $scope.game.winner = 0;
         $scope.game.turn = 1;
-        $scope.game.score1 = 0;
-        $scope.game.score2 = 0;
+        $scope.game.scoreO = 0;
+        $scope.game.scoreX = 0;
         $scope.canMove = true;
     }
 
 
-    console.log(getWinner());
-
-    self.winner = getWinner();
+    //console.log(getWinner());
+    //
+    //self.winner = getWinner();
 }
 
 
 
 
 
-
-
-
-
-//this.gameBoard = [
-//    {player:'null'}, {player: 'null'}, {player:'null'},
-//    {player: 'null'}, {player:'null'}, {player:'null'},
-//    {player: 'null'}, {player: 'null'}, {player:'null'}
-//]
-
-//var player = 1;
-//this.assign=assign;
-//
-//function assign(button){
-//    if(player == 1) {
-//        document.getElementById(button).value = "X";
-//        document.getElementById(button).disabled= true;
-//        player = player - 1;
-//        evaluateForWinner();
-//
-//    }
-//    else {
-//        document.getElementById(button).value = "O";
-//        document.getElementById(button).disabled = true;
-//        player = player + 1;
-//        evaluateForWinner();
-//
-//
-//    }
-//
-//
-//
-//
-//
-//    function evaluateForWinner() {
-//
-//        if (document.getElementById("zero").value == "X" &&
-//            document.getElementById("one").value == "X" &&
-//            document.getElementById("two").value == "X"){
-//            document.getElementById('winner-main-msg').innerHTML = 'Player X Wins!';
-//            document.getElementById('winnerX').innerHTML = 1;
-//
-//        }
-//        else if (
-//            document.getElementById("three").value == "X" &&
-//            document.getElementById("four").value == "X" &&
-//            document.getElementById("five").value == "X"){
-//            document.getElementById('winner-main-msg').innerHTML = 'Player X Wins!';
-//        }
-//        else if (
-//            document.getElementById("six").value == "X" &&
-//            document.getElementById("seven").value == "X" &&
-//            document.getElementById("eight").value == "X"){
-//            document.getElementById('winner-main-msg').innerHTML = 'Player X Wins!';
-//        }
-//        else if (
-//            document.getElementById("zero").value == "X" &&
-//            document.getElementById("three").value == "X" &&
-//            document.getElementById("six").value == "X"){
-//            document.getElementById('winner-main-msg').innerHTML = 'Player X Wins!';
-//        }
-//        else if (
-//            document.getElementById("one").value == "X" &&
-//            document.getElementById("four").value == "X" &&
-//            document.getElementById("seven").value == "X"){
-//            document.getElementById('winner-main-msg').innerHTML = 'Player X Wins!';
-//        }
-//        else if (
-//            document.getElementById("two").value == "X" &&
-//            document.getElementById("five").value == "X" &&
-//            document.getElementById("eight").value == "X"){
-//            document.getElementById('winner-main-msg').innerHTML = 'Player X Wins!';
-//        }
-//        else if (
-//            document.getElementById("zero").value == "X" &&
-//            document.getElementById("four").value == "X" &&
-//            document.getElementById("eight").value == "X"){
-//            document.getElementById('winner-main-msg').innerHTML = 'Player X Wins!';
-//        }
-//        else if (
-//            document.getElementById("two").value == "X" &&
-//            document.getElementById("four").value == "X" &&
-//            document.getElementById("six").value == "X") {
-//            document.getElementById('winner-main-msg').innerHTML = 'Player X Wins!';
-//        }
-//        else if (
-//            document.getElementById("zero").value == "O" &&
-//            document.getElementById("one").value == "O" &&
-//            document.getElementById("two").value == "O"){
-//            document.getElementById('winner-main-msg').innerHTML = 'Player O Wins!';
-//        }
-//        else if (
-//            document.getElementById("three").value == "O" &&
-//            document.getElementById("four").value == "O" &&
-//            document.getElementById("five").value == "O"){
-//            document.getElementById('winner-main-msg').innerHTML = 'Player O Wins!';
-//        }
-//        else if (
-//            document.getElementById("six").value == "O" &&
-//            document.getElementById("seven").value == "O" &&
-//            document.getElementById("eight").value == "O"){
-//            document.getElementById('winner-main-msg').innerHTML = 'Player O Wins!';
-//        }
-//        else if (
-//            document.getElementById("zero").value == "O" &&
-//            document.getElementById("three").value == "O" &&
-//            document.getElementById("six").value == "O"){
-//            document.getElementById('winner-main-msg').innerHTML = 'Player O Wins!';
-//        }
-//        else if (
-//            document.getElementById("one").value == "O" &&
-//            document.getElementById("four").value == "O" &&
-//            document.getElementById("seven").value == "O"){
-//            document.getElementById('winner-main-msg').innerHTML = 'Player O Wins!';
-//        }
-//        else if (
-//            document.getElementById("two").value == "O" &&
-//            document.getElementById("five").value == "O" &&
-//            document.getElementById("eight").value == "O"){
-//            document.getElementById('winner-main-msg').innerHTML = 'Player O Wins!';
-//        }
-//
-//        else if (
-//            document.getElementById("zero").value == "O" &&
-//            document.getElementById("four").value == "O" &&
-//            document.getElementById("eight").value == "O"){
-//            document.getElementById('winner-main-msg').innerHTML = 'Player O Wins!';
-//        }
-//        else if (
-//            document.getElementById("two").value == "O" &&
-//            document.getElementById("four").value == "O" &&
-//            document.getElementById("six").value == "O"){
-//            document.getElementById('winner-main-msg').innerHTML = 'Player O Wins!'
-//        }
-//
-//        else{
-//            console.log("no winner")
-//
-//        }
-//
-//    }
 
 

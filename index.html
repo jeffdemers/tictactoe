@@ -24,7 +24,7 @@
     <ul id="scores">
         <li id="score-home">
             <h2>Score of X</h2>
-            <p id="winnerX" ng-bind="game.score2"> </p>
+            <p id="winnerX" ng-bind="game.scoreX"> </p>
 
 
         </li>
@@ -37,22 +37,22 @@
 
         <li id="score-visitor">
             <h2>Score for O</h2>
-            <p id="winnerO" ng-bind="game.score1">  </p>
+            <p id="winnerO" ng-bind="game.scoreO">  </p>
 
         </li>
     </ul>
 </div>
 
     <div id ="board">
-        <div class="input" ng-click="move($index)" ng-class = "" ng-repeat="block in game.board track by $index">
+        <div ng-repeat="block in game.board track by $index" class ="input" ng-style="{background: }" ng-click="move($index)">
             <h3>{{getSymbol($index)}}</h3>
         </div>
     </div>
 
 
 <div id="wrapper">
-    <input type="button" id="board-reset" value="Play Again!"  ng-click="reset()"/>
-    <input type="button" id="board-reset" value="New Game"  ng-click="newGame()"/>
+    <input type="button" class="board-reset" value="Play Again!"  ng-click="reset()"/>
+    <input type="button" class="board-reset" value="New Game"  ng-click="newGame()"/>
 </div>
 
     </body>
@@ -61,18 +61,4 @@
 
 
 </html>
-
-
-<!--<input type = "button" id="zero" onclick="assign('zero')"/>-->
-<!--<input type = "button" id="zero" onclick="{{ttt.assign}}"/>-->
-<!--<input type = "button" id="one" onclick="{{ttt.assign}}('one')"/>-->
-<!--<input type = "button" id="two" onclick="{{ttt.assign}}('two')"/>-->
-
-<!--<input type = "button" id="three" onclick="{{ttt.assign}}('three')"/>-->
-<!--<input type = "button" id="four" onclick="{{ttt.assign}}('four')"/>-->
-<!--<input type = "button" id="five" onclick="{{ttt.assign}}('five')"/>-->
-
-<!--<input type = "button" id="six" onclick="{{ttt.assign}}('six')"/>-->
-<!--<input type = "button" id="seven" onclick="{{ttt.assign}}('seven')"/>-->
-<!--<input type = "button" id="eight" onclick="{{ttt.assign}}('eight')"/>-->
 
