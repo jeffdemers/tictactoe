@@ -1,28 +1,29 @@
 body{
-    font-family: 'Droid Sans', sans-serif;
-    background: url('blue_background.jpg') no-repeat center;
+    font-family: 'Shadows Into Light', cursive;
+    background: url('lighthouse.jpeg') no-repeat center;
     background-size: cover;
 }
 
 h6{
-    margin: 0px 0px 0px 40px;
-    font-size: 40px;
-    color: white;
+    margin: 0 0 0 40px;
+    font-size: 50px;
+    color: dimgrey;
 }
 
 #header{
     width: 100%;
-    background-color: darkgrey;
-    height: 80px;
-    margin-top: 0px;
-    padding-top: 0px;
+    background:rgba(255,255,255, 0.7);
+    background-size: cover;
+    height: 90px;
+    border: solid 5px white;
+
 
 
 }
 
 h3{
-    font-size: 45px;
-    margin: 0px;
+    font-size: 60px;
+    margin: 0;
     margin-left: 45px;
 }
 
@@ -32,26 +33,42 @@ h3{
     height: 400px;
     margin-left: auto;
     margin-right: auto;
+    /*background:rgba(255,255,255, 0.5);*/
 
 
 }
 
 .input {
-    border:solid white;
-    height: 31%;
-    width: 31%;
+    border:solid rgba(255,255,255, 0.9);
+    height: 31.75%;
+    width: 31.75%;
     float: left;
-    background-color: transparent;
-    font-size: 20%;
+    background:rgba(255,255,255, 0.5);
+
+
+}
+
+.input:hover{
+    background-color: darkred;
+    cursor: pointer;
+    -webkit-transition: backgound-color 5s ease-out;
+    -moz-transition: background-color 5s ease-out;
+    -o-transition: background-color 5s ease-out;
+    transition: background-color 5s ease-out;
+}
+
+h3#symbol{
+    font-size: 80px;
+    color: black;
 
 }
 
 
 
 ul{
-    margin-top: 0px;
+    margin-top: 0;
     margin-bottom: 3px;
-    padding-left: 0px;
+    text-align: center;
 
 
 }
@@ -63,55 +80,55 @@ li{
 
 }
 
-#score-visitor{
-    /*float: right;*/
-}
 
-#score-home {
-}
-
-#winner-main-msg{
-    /*font-size: 25px;*/
-    /*margin-bottom: 0px;*/
-    color: darkgreen;
-
+.winner-main-msg{
+    color: darkred;
+    z-index: 100;
 }
 
 #wrapper {
     text-align: center;
+    height: 200px;
 }
 
 .board-reset{
     font-size: 20px;
     width: 150px;
-    length: 150px;
-    margin-bottom: 20px;
+    margin-top: 10px;
     margin-left: auto;
     margin-right: auto;
-
+    border-radius: 25%;
+    background-color: lightgray;
 }
 
 #score{
-    width: 750px;
-    margin-left: auto;
-    margin-right: auto;
+    text-align: center;
+    font-size: 20px;
+    padding-left: -100px;
+
 }
 
 p {
-    font-size: 25px;
-    padding-bottom: 0px;
-    margin-bottom: 0px;
-    padding-left: 50px;
+    padding-bottom: 0;
+    margin-bottom: 0;
+    padding-left: 25px;
+    font-size: 40px;
 
 }
 
 footer{
-    height: 300px;
-    background-color: darkgrey;
+    height: 175px;
+    /*background: url('blue_background.jpg') no-repeat center;*/
+    /*background-size: cover;*/
+    background:rgba(255,255,255, 0.5);
 }
 
-.player1 {
-    background-color: yellow;
-    width: 100%;
-    height: 100%;
+
+#winnerX #winnerO{
+    font-size: 25px;
+}
+
+ul#scores{
+    padding-left: 0;
+
 }
